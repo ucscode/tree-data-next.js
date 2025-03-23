@@ -48,10 +48,7 @@
         build(callback) {
             return new Promise((resolve) => {
                 // Get root node!
-                let parent = this.#tree.find(function(item) {
-                    return [null, undefined, ''].includes(item.parent);
-                });
-                
+                let parent = this.#tree.find(item => [null, undefined, ''].includes(item.parent));
                 if(!parent) throw new Error("No root element found!");
                 
                 let nodeList = this.#createNode(parent, callback);
@@ -71,7 +68,7 @@
          * @returns {HTMLLIElement}
          */
         #createNode(nodeItem, callback, depth = 0) {
-            let li = this.#createDOMElement(nodeItem);
+            let li = this.#createNodeElement(nodeItem);
             let children = this.#getChildren(nodeItem);
 
             if(children.length) {
@@ -94,16 +91,16 @@
          * @param {NodeItem} nodeItem
          * @returns {HTMLLIElement}
          */
-        #createDOMElement(nodeItem) {
-            let li = document.createElement('li');
-            li.setAttribute('class', 'tree-item');
-
+        #createNodeElement(nodeItem) {
             let anchor = document.createElement('a');
             anchor.setAttribute('class', 'tree-anchor');
             anchor.setAttribute('href', 'javascript:void(0)');
             anchor.innerHTML = String(nodeItem.value);
             
+            let li = document.createElement('li');
+            li.setAttribute('class', 'tree-item');
             li.appendChild(anchor);
+
             return li;
         }
         
@@ -114,9 +111,7 @@
          * @returns {NodeItem[]}
          */
         #getChildren(nodeItem) {
-            return this.#tree.filter(function(child) {
-                return child.parent == nodeItem.id;
-            });
+            return this.#tree.filter(child => child.parent == nodeItem.id);
         }
 
         /**
