@@ -22,13 +22,13 @@ It's super simple to use this javascript plugin.
 **1.** Include the CSS file to your document
 
 ```html
-<link rel="stylesheet" href="TreeDataNext.min.css" />
+<link rel="stylesheet" href="treedata-next.css" />
 ```
 
 **2.** Include the JavaScript file to your document
 
 ```html
-<script src="TreeDataNext.js"></script>
+<script src="treedata-next.js"></script>
 ```
 
 **3.** Create your tree structure

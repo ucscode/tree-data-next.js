@@ -52,7 +52,7 @@
                 if(!parent) throw new Error("No root element found!");
                 
                 let nodeList = this.#createNode(parent, callback);
-                let container = this.#createContainer('tree tree-base', nodeList);
+                let container = this.#createContainer('tree-next', nodeList);
                 let wrapper = this.#createWrapper(container);
 
                 resolve(wrapper);
